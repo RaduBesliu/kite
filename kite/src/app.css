@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Calligraffitti&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --clr-white: white;
+  --clr-background: #f2f2f2;
+  --clr-light-gray: #f3f3f3;
+  --clr-mid-gray: #e4e7e9;
+  --clr-dark-gray: #979797;
+  --clr-font-primary: #1a1a1a;
+  --clr-font-secondary: #787878;
+  --clr-button-primary: #4a90e2;
+  --clr-button-secondary: #007aff;
+  --clr-red: #ff3b30;
+  --clr-orange: #e8b100;
+
+  --font-calli: "Calligraffitti", sans-serif;
+}
