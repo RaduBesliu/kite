@@ -11,10 +11,16 @@
   flex-grow: 1;
 }
 
+/* Input data */
 .input__data {
   width: 100%;
 }
 
+.input__data--error {
+  border-color: red !important;
+}
+
+/* Select */
 .form__select {
   height: 44px;
   border: 2px solid var(--clr-dark-gray);
