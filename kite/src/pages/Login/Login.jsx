@@ -11,34 +11,36 @@ import Button from "../../components/Button";
 import "./login.css";
 
 function login() {
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {});
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_API_ENDPOINT;
 
-  // Redirect home if there is no auth token
+  // Redirect home if there is an auth token
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (token) {
       navigate("/");
     }
-  }, []);
+  }, [token]);
 
   const submitForm = (e) => {
     e.preventDefault();
-    axios.post(`${BASE_URL}`, {});
+    axios.post(`${BASE_URL}/login`, { username, password }).then((response) => {
+      localStorage.setItem("token", response.data.userId);
+      setToken(response.data.userId);
+    });
   };
 
   return (
     <form className="form">
       <h1 className="title">Kite</h1>
       <AccountInput
-        title="Username"
+        title="Email"
         type="text"
-        value={userName}
-        setValue={setUserName}
+        value={username}
+        setValue={setUsername}
       ></AccountInput>
       <AccountInput
         title="Password"
