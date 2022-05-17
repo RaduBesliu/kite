@@ -1,9 +1,13 @@
+// React
 import React from "react";
 import { useEffect, useState } from "react";
 
+// Libraries
 import { Navigate, Outlet } from "react-router-dom";
-
 import axios from "axios";
+
+// Helpers
+import { validate_error } from "../helpers/validate_error";
 
 function PrivateRoute() {
   const [auth, setAuth] = useState(true);
@@ -19,9 +23,10 @@ function PrivateRoute() {
         .then(() => {
           setAuth(true);
         })
-        .catch(() => {
+        .catch((err) => {
           setAuth(false);
           localStorage.removeItem("token");
+          validate_error(err);
         });
     };
 
