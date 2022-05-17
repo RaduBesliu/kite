@@ -1,0 +1,22 @@
+.input--flex--row {
+  display: flex;
+  width: 420px;
+  flex-direction: row;
+  height: max-content;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.input--flex {
+  flex-grow: 1;
+}
+
+.input__data {
+  width: 100%;
+}
+
+.form__select {
+  height: 44px;
+  border: 2px solid var(--clr-dark-gray);
+  font-size: 16px;
+}
