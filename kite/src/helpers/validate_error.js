@@ -6,4 +6,5 @@ export function validate_error(err) {
   } else {
     console.log("Error", err.message);
   }
+  return [];
 }
