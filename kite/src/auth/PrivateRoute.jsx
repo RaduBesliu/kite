@@ -12,8 +12,6 @@ import { Navigate, Outlet } from "react-router-dom";
 function PrivateRoute() {
   const [auth, setAuth] = useState(true);
 
-  const userToken = localStorage.getItem("token");
-
   // This will be used if there is proper authentication
   // If the user id isn't in the database, the user is logged out and local storage token is cleared
   // Prevents users from entering random tokens
@@ -38,7 +36,9 @@ function PrivateRoute() {
 
   // If there is no token present, logout
   useEffect(() => {
-    if (!userToken) {
+    const userToken = localStorage.getItem("token");
+    // userid can be 0, that's why we compare to null
+    if (userToken === null) {
       localStorage.removeItem("token");
       setAuth(false);
     }
