@@ -10,11 +10,15 @@ module.exports = {
   globals: {},
   parser: "@babel/eslint-parser",
   parserOptions: {
+    babelOptions: {
+      presets: ["@babel/preset-react"],
+    },
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2021,
     sourceType: "module",
+    requireConfigFile: false,
   },
   plugins: ["react", "import", "react-hooks", "@babel"],
   ignorePatterns: ["node_modules/"],
