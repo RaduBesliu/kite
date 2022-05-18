@@ -4,7 +4,7 @@ import React from "react";
 import { Marker } from "react-leaflet";
 
 // Components
-import { StyledSpotPopup } from "./SpotPopup/SpotPopus.styles";
+import { StyledSpotPopup } from "./SpotPopup/SpotPopup.styles";
 
 function SpotMarker({ className, position, icon }) {
   return (
