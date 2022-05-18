@@ -20,7 +20,7 @@ function Map({ className, spots }) {
     <MapContainer
       center={[45.505, 15]}
       zoom={5}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
       doubleClickZoom={false}
       className={className}
     >
