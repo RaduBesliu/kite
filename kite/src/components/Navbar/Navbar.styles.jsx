@@ -10,7 +10,7 @@ export const StyledNavbar = styled(Navbar)`
   height: 68px;
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
