@@ -26,4 +26,8 @@ export const GlobalStyles = createGlobalStyle`
     --font-calli: "Calligraffitti", sans-serif;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
 `;
