@@ -8,7 +8,7 @@ module.exports = {
   },
   extends: ["eslint:recommended", "plugin:react/recommended"],
   globals: {},
-  parser: "babel-eslint",
+  parser: "@babel/eslint-parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -16,12 +16,14 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: "module",
   },
-  plugins: ["react", "import", "react-hooks"],
+  plugins: ["react", "import", "react-hooks", "@babel"],
   ignorePatterns: ["node_modules/"],
-  rules: {},
+  rules: {
+    "react/prop-types": "off",
+  },
   settings: {
     react: {
-      version: "latest",
+      version: "detect",
     },
   },
 };
