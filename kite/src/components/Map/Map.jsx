@@ -7,6 +7,7 @@ import markerIconPng from "../../assets/images/marker-red.png";
 // Libraries
 import { MapContainer, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
+import Leaflet from "leaflet";
 import { BiFilter } from "react-icons/bi";
 
 // Components
@@ -14,19 +15,24 @@ import { StyledButton } from "../Button/Button.styles";
 import { StyledSpotMarker } from "../SpotMarker/SpotMarker.styles";
 
 function Map({ className, spots }) {
-  spots.length && console.log(spots);
+  const corner1 = Leaflet.latLng(-90, -190);
+  const corner2 = Leaflet.latLng(90, 190);
+  const bounds = Leaflet.latLngBounds(corner1, corner2);
 
   return (
     <MapContainer
+      className={className}
+      maxBoundsViscosity={1.0}
+      maxBounds={bounds}
       center={[45.505, 15]}
       zoom={5}
       scrollWheelZoom={true}
       doubleClickZoom={false}
-      className={className}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        minZoom={3}
       />
       {spots.map((spot) => (
         <StyledSpotMarker
@@ -48,7 +54,7 @@ function Map({ className, spots }) {
         height="44px"
         backgroundColor="white"
         position="absolute"
-        zIndex="1000"
+        zIndex="400"
         color="var(--clr-font-primary)"
         top={"67px"}
         right={"18px"}
