@@ -12,6 +12,7 @@ import axios from "axios";
 // Components
 import { StyledMap } from "../../components/Map/Map.styles";
 import { StyledNavbar } from "../../components/Navbar/Navbar.styles";
+import { StyledLocations } from "../../components/Locations/Locations.styles";
 
 function home() {
   const [spots, setSpots] = useState([]);
@@ -48,6 +49,7 @@ function home() {
       </Helmet>
       <StyledNavbar />
       <StyledMap spots={spots} />
+      <StyledLocations />
     </>
   );
 }
