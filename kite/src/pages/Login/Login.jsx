@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 // Libraries
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 // Componets
 import AccountInput from "../../components/AccountInput";
@@ -45,6 +46,9 @@ function login() {
 
   return (
     <form className="form">
+      <Helmet>
+        <title>Kite | Login</title>
+      </Helmet>
       <h1 className="title">Kite</h1>
       <AccountInput
         title="Email"
@@ -60,15 +64,15 @@ function login() {
       ></AccountInput>
       <Button className="form__submit" title="Login" handleClick={submitForm} />
       <p
+        className="form__change-page"
         style={{
-          fontSize: 20,
           display: "block",
           textAlign: "center",
           marginTop: 16,
           letterSpacing: 1.15,
         }}
       >
-        Don't have an account?
+        Don&apos;t have an account?
         <br />
         <Link
           to="../register"
