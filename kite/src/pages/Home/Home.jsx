@@ -49,7 +49,11 @@ function home() {
       </Helmet>
       <StyledNavbar />
       <StyledMap spots={spots} />
-      <StyledLocations />
+      {!spots.length ? (
+        <h1>Loading spots...</h1>
+      ) : (
+        <StyledLocations spots={spots} />
+      )}
     </>
   );
 }
