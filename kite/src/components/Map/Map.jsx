@@ -13,6 +13,7 @@ import { BiFilter } from "react-icons/bi";
 // Components
 import { StyledButton } from "../Button/Button.styles";
 import { StyledSpotMarker } from "../SpotMarker/SpotMarker.styles";
+import { StyledFilterForm } from "../FilterForm/FilterForm.styles";
 
 function Map({ className, spots }) {
   const corner1 = Leaflet.latLng(-90, -190);
@@ -73,6 +74,7 @@ function Map({ className, spots }) {
           </div>
         }
       />
+      <StyledFilterForm />
     </MapContainer>
   );
 }
