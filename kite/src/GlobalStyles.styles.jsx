@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     --clr-light-gray: #f3f3f3;
     --clr-mid-gray: #e4e7e9;
     --clr-dark-gray: #d8d8d8;
+    --clr-input-border: #c7c7cc;
     --clr-font-primary: #1a1a1a;
     --clr-font-secondary: #787878;
     --clr-button-primary: #4a90e2;
