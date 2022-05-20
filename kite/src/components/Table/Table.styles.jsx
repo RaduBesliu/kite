@@ -18,6 +18,7 @@ export const StyledTable = styled(Table)`
     border-right: 19px solid transparent;
     padding-left: 5px;
     font-weight: 500;
+    user-select: none;
   }
 
   & td {
@@ -27,11 +28,15 @@ export const StyledTable = styled(Table)`
     border-right: 19px solid transparent;
   }
 
-  & .flex--container {
+  & .flex-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-width: 175px;
+  }
+
+  & .sort-icon:hover {
+    cursor: pointer;
   }
 
   & thead tr {
