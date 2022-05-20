@@ -4,11 +4,27 @@ import styled from "styled-components";
 import FilterForm from "./FilterForm";
 
 export const StyledFilterForm = styled(FilterForm)`
+  box-shadow: ${(props) => props.boxShadow};
+  border-radius: ${(props) => props.borderRadius};
+
   width: 242px;
   height: 248px;
   background-color: var(--clr-button-third);
   position: absolute;
-  top: 49px;
-  right: 18px;
+  top: 117px;
+  right: 19px;
   z-index: 900;
+
+  & .form__input {
+    margin-top: 22px;
+  }
+
+  & .form__input:first-child {
+    margin-top: 28px;
+  }
+
+  & .form__submit {
+    margin-inline: auto;
+    margin-top: 30px;
+  }
 `;
