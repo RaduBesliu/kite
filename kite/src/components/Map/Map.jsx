@@ -8,16 +8,13 @@ import markerIconPng from "../../assets/images/marker-red.png";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import Leaflet from "leaflet";
-import { BiFilter } from "react-icons/bi";
 
 // Components
-import { StyledButton } from "../Button/Button.styles";
 import { StyledSpotMarker } from "../SpotMarker/SpotMarker.styles";
-import { StyledFilterForm } from "../FilterForm/FilterForm.styles";
 
-function Map({ className, spots }) {
-  const corner1 = Leaflet.latLng(-90, -190);
-  const corner2 = Leaflet.latLng(90, 190);
+function Map({ className, filterSpots }) {
+  const corner1 = Leaflet.latLng(-90, -200);
+  const corner2 = Leaflet.latLng(90, 200);
   const bounds = Leaflet.latLngBounds(corner1, corner2);
 
   return (
@@ -35,7 +32,7 @@ function Map({ className, spots }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         minZoom={3}
       />
-      {spots.map((spot) => (
+      {filterSpots.map((spot) => (
         <StyledSpotMarker
           key={spot.id}
           position={[spot.lat, spot.long]}
@@ -44,37 +41,14 @@ function Map({ className, spots }) {
               iconUrl: markerIconPng,
               iconSize: [27, 41],
               iconAnchor: [13, 41],
-              popupAnchor: [-100, 0],
+              popupAnchor: [
+                spot.long < -150 ? 175 : spot.long > 150 ? -175 : 0,
+                spot.lat < -70 ? -50 : spot.lat > 70 ? 450 : -50,
+              ],
             })
           }
         />
       ))}
-
-      <StyledButton
-        width="150px"
-        height="44px"
-        backgroundColor="white"
-        position="absolute"
-        zIndex="400"
-        color="var(--clr-font-primary)"
-        top={"67px"}
-        right={"18px"}
-        filter={"drop-shadow(0px 2px 4px rgba(0, 0, 0,  0.5))"}
-        buttonLabel={
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "7px",
-            }}
-          >
-            <BiFilter size={22} />
-            {"FILTERS"}
-          </div>
-        }
-      />
-      <StyledFilterForm />
     </MapContainer>
   );
 }
