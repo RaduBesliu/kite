@@ -6,15 +6,17 @@ import { useState, useEffect } from "react";
 import { StyledTable } from "../Table/Table.styles";
 import { StyledSearchInput } from "../SearchInput/SearchInput.styles";
 
-function Locations({ className, spots }) {
+function Locations({ className, filterSpots }) {
   const [searchFilter, setSearchFilter] = useState("");
   const [shownSpots, setShownSpots] = useState([]);
 
   useEffect(() => {
     setShownSpots(
-      spots.filter((spot) => spot.name.toLowerCase().includes(searchFilter))
+      filterSpots.filter((spot) =>
+        spot.name.toLowerCase().includes(searchFilter)
+      )
     );
-  }, [searchFilter]);
+  }, [searchFilter, filterSpots]);
 
   return (
     <div className={className}>
