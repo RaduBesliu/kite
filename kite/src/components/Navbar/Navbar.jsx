@@ -4,19 +4,31 @@ import { useState } from "react";
 
 // Libraries
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 // Components
 import { StyledButton } from "../Button/Button.styles";
 import { FaUserCircle } from "react-icons/fa";
 import { MdExitToApp } from "react-icons/md";
 
+// Features
+import { setNewSpot } from "../../features/addSpot/addSpotSlice";
+
 function Navbar({ className }) {
   const [showLogout, setShowLogout] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const newSpot = useSelector((state) => state.addSpot.value);
 
   const handleUserClick = () => {
     setShowLogout((value) => !value);
+  };
+
+  const openAddSpotForm = (e) => {
+    e.preventDefault();
+    dispatch(setNewSpot({ ...newSpot, isPopupOpen: !newSpot["isPopupOpen"] }));
   };
 
   // Logout user
@@ -35,6 +47,7 @@ function Navbar({ className }) {
           backgroundColor="var(--clr-blue-2)"
           buttonLabel="ADD SPOT"
           fontWeight="700"
+          handleClick={openAddSpotForm}
         />
         <div className="user">
           <FaUserCircle
