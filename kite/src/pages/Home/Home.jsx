@@ -17,6 +17,7 @@ import { StyledNavbar } from "../../components/Navbar/Navbar.styles";
 import { StyledLocations } from "../../components/Locations/Locations.styles";
 import { StyledFilterForm } from "../../components/FilterForm/FilterForm.styles";
 import { StyledButton } from "../../components/Button/Button.styles";
+import { StyledAddSpotForm } from "../../components/AddSpotForm/AddSpotForm.styles";
 
 function Home() {
   const [spots, setSpots] = useState([]);
@@ -28,6 +29,7 @@ function Home() {
 
   const filter = useSelector((state) => state.filter.value);
   const popupState = useSelector((state) => state.popup.value);
+  const addSpot = useSelector((state) => state.addSpot.value);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -135,6 +137,7 @@ function Home() {
       ) : (
         <StyledLocations filterSpots={filterSpots} />
       )}
+      {addSpot.isPopupOpen && <StyledAddSpotForm />}
     </>
   );
 }
