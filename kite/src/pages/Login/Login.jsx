@@ -78,7 +78,7 @@ function login() {
           to="../register"
           style={{
             textDecoration: "none",
-            color: "var(--clr-button-primary)",
+            color: "var(--clr-blue-1)",
             fontWeight: "bold",
           }}
         >
