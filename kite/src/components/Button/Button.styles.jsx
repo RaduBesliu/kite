@@ -12,8 +12,11 @@ export const StyledButton = styled(Button)`
   position: ${(props) => props.position || "static"};
   color: ${(props) => props.color || "white"};
   margin: ${(props) => props.margin || 0};
-  top: ${(props) => props.top || 0};
-  right: ${(props) => props.right || 0};
+  top: ${(props) => props.top};
+  right: ${(props) => props.right};
+  bottom: ${(props) => props.bottom};
+  left: ${(props) => props.left};
+
   filter: ${(props) => props.filter || "none"};
   border-radius: ${(props) => props.borderRadius || 0};
   box-shadow: ${(props) => props.boxShadow || "none"};
