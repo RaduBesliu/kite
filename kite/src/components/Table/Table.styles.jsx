@@ -7,6 +7,7 @@ export const StyledTable = styled(Table)`
   width: 100%;
   display: block;
   overflow-x: auto;
+  overflow-y: hidden;
   /* white-space: nowrap; */
   border-spacing: 0;
   font-size: 20px;
@@ -40,11 +41,11 @@ export const StyledTable = styled(Table)`
   }
 
   & thead tr {
-    background-color: var(--clr-dark-gray);
+    background-color: var(--clr-gray-3);
   }
 
   & tbody tr:nth-child(2n) {
-    background-color: var(--clr-light-gray);
+    background-color: var(--clr-gray-1);
   }
 
   @media (max-width: 1500px) {
