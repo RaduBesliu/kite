@@ -34,8 +34,8 @@ function FilterForm({ className, setShowFilterForm }) {
         width="217px"
         height="30px"
         name="country"
-        borderBottom="2.38px solid var(--clr-input-border)"
-        backgroundColor="var(--clr-button-third)"
+        borderBottom="2.38px solid var(--clr-gray-4)"
+        backgroundColor="var(--clr-white-2)"
         labelText="Country"
         formData={formData}
         setFormData={setFormData}
@@ -45,8 +45,8 @@ function FilterForm({ className, setShowFilterForm }) {
         width="217px"
         height="30px"
         name="windProbability"
-        borderBottom="2.38px solid var(--clr-input-border)"
-        backgroundColor="var(--clr-button-third)"
+        borderBottom="2.38px solid var(--clr-gray-4)"
+        backgroundColor="var(--clr-white-2)"
         labelText="Wind Probability"
         formData={formData}
         setFormData={setFormData}
@@ -56,7 +56,7 @@ function FilterForm({ className, setShowFilterForm }) {
         width="150px"
         height="44px"
         buttonLabel={"APPLY FILTER"}
-        color="var(--clr-font-primary)"
+        color="var(--clr-black-1)"
         filter="drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5))"
         handleClick={submitFilterForm}
       />
