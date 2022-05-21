@@ -27,7 +27,7 @@ function Locations({ className, filterSpots }) {
         searchInputLabelColor="rgba(0, 0, 0, 0.87)"
         width="360px"
         height="42px"
-        backgroundColor="var(--clr-mid-gray)"
+        backgroundColor="var(--clr-gray-2)"
         setSearchFilter={setSearchFilter}
         debounceTimeMs={500}
       />
