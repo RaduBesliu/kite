@@ -32,7 +32,7 @@ function Navbar({ className }) {
         <StyledButton
           width="150px"
           height="44px"
-          backgroundColor="var(--clr-button-secondary)"
+          backgroundColor="var(--clr-blue-2)"
           buttonLabel="ADD SPOT"
           fontWeight="700"
         />
@@ -47,11 +47,13 @@ function Navbar({ className }) {
               className="user--logout"
               width="106px"
               height="48px"
-              backgroundColor="var(--clr-button-third)"
+              backgroundColor="var(--clr-white-2)"
               boxShadow="0px 0px 8px rgba(0, 0, 0, 0.12), 0px 8px 8px rgba(0, 0, 0, 0.24)"
               borderRadius="2px"
               color="var(--clr-red)"
               fontSize="14px"
+              position="absolute"
+              right="0"
               handleClick={handleLogout}
               buttonLabel={
                 <div
