@@ -142,7 +142,7 @@ function register() {
           to="../login"
           style={{
             textDecoration: "none",
-            color: "var(--clr-button-primary)",
+            color: "var(--clr-blue-1)",
             fontWeight: "bold",
           }}
         >

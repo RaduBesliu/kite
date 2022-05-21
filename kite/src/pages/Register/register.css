@@ -23,7 +23,7 @@
 /* Select */
 .form__select {
   height: 44px;
-  border: 2px solid var(--clr-dark-gray);
+  border: 2px solid var(--clr-gray-3);
   font-size: 16px;
 }
 
