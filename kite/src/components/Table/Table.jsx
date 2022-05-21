@@ -2,6 +2,9 @@
 import React from "react";
 import { useState } from "react";
 
+// Libraries
+import { AiFillStar } from "react-icons/ai";
+
 // Components
 import TableHeader from "./TableHeader";
 
@@ -90,7 +93,19 @@ function Table({ className, shownSpots }) {
       <tbody>
         {sortedSpots().map((spot) => (
           <tr key={spot.id}>
-            <td>{spot.name}</td>
+            <td style={{ position: "relative" }}>
+              {spot.name}{" "}
+              {spot.favourite && (
+                <span
+                  style={{
+                    position: "absolute",
+                    transform: "translate(5px, 3px)",
+                  }}
+                >
+                  <AiFillStar color="var(--clr-yellow)" />
+                </span>
+              )}
+            </td>
             <td>{spot.country}</td>
             <td>{spot.lat}</td>
             <td>{spot.long}</td>
