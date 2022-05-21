@@ -18,23 +18,43 @@ import { StyledLocations } from "../../components/Locations/Locations.styles";
 import { StyledFilterForm } from "../../components/FilterForm/FilterForm.styles";
 import { StyledButton } from "../../components/Button/Button.styles";
 
-function home() {
+function Home() {
   const [spots, setSpots] = useState([]);
   const [filterSpots, setFilterSpots] = useState([]);
   const [showFilterForm, setShowFilterForm] = useState(false);
+  const [favourites, setFavourites] = useState([]);
 
   const BASE_URL = process.env.REACT_APP_API_ENDPOINT;
 
   const filter = useSelector((state) => state.filter.value);
+  const popupState = useSelector((state) => state.popup.value);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await axios
+      const [favouritesDataObject, favouritesData] = await axios
+        .get(`${BASE_URL}/favourites`)
+        .then((response) => {
+          const data = response.data;
+          const newFavouriteObject = {};
+          data.forEach((favouriteSpot) => {
+            newFavouriteObject[favouriteSpot.spot] = true;
+          });
+          return [newFavouriteObject, data];
+        });
+
+      const spotsData = await axios
         .get(`${BASE_URL}/spot`)
-        .then((response) => response.data)
+        .then((response) =>
+          response.data.map((spot) => ({
+            ...spot,
+            favourite: favouritesDataObject[spot.id] === true,
+          }))
+        )
         .catch((err) => validate_error(err));
-      setFilterSpots(data);
-      setSpots(data);
+
+      setFilterSpots(spotsData);
+      setSpots(spotsData);
+      setFavourites(favouritesData);
     };
 
     fetchData();
@@ -69,33 +89,41 @@ function home() {
         <title>Kite | Locations</title>
       </Helmet>
       <StyledNavbar />
-      <StyledMap filterSpots={filterSpots} />
-      <StyledButton
-        width="150px"
-        height="44px"
-        backgroundColor="white"
-        position="absolute"
-        zIndex="400"
-        color="var(--clr-font-primary)"
-        top={"135px"}
-        right={"18px"}
-        filter={"drop-shadow(0px 2px 4px rgba(0, 0, 0,  0.5))"}
-        handleClick={() => setShowFilterForm(true)}
-        buttonLabel={
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "7px",
-            }}
-          >
-            <BiFilter size={22} />
-            {"FILTERS"}
-          </div>
-        }
+      <StyledMap
+        filterSpots={filterSpots}
+        favourites={favourites}
+        spots={spots}
+        setSpots={setSpots}
+        setFavourites={setFavourites}
       />
-      {showFilterForm && (
+      {(!popupState || popupState.open === false) && (
+        <StyledButton
+          width="150px"
+          height="44px"
+          backgroundColor="white"
+          position="absolute"
+          zIndex="400"
+          color="var(--clr-black-1)"
+          top={"135px"}
+          right={"18px"}
+          filter={"drop-shadow(0px 2px 4px rgba(0, 0, 0,  0.5))"}
+          handleClick={() => setShowFilterForm(true)}
+          buttonLabel={
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "7px",
+              }}
+            >
+              <BiFilter size={22} />
+              {"FILTERS"}
+            </div>
+          }
+        />
+      )}
+      {showFilterForm && (!popupState || popupState.open === false) && (
         <StyledFilterForm
           boxShadow="0px 0px 8px rgba(0, 0, 0, 0.12), 0px 8px 8px rgba(0, 0, 0, 0.24)"
           borderRadius="2px"
@@ -111,4 +139,4 @@ function home() {
   );
 }
 
-export default home;
+export default Home;
