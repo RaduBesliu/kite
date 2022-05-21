@@ -21,7 +21,7 @@ export const StyledFilterFormInput = styled(FilterFormInput)`
   }
 
   & input:focus {
-    border-color: var(--clr-button-secondary);
+    border-color: var(--clr-blue-2);
   }
 
   & label {
