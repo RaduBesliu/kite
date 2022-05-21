@@ -11,17 +11,23 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   :root {
-    --clr-white: white;
-    --clr-light-gray: #f3f3f3;
-    --clr-mid-gray: #e4e7e9;
-    --clr-dark-gray: #d8d8d8;
-    --clr-input-border: #c7c7cc;
-    --clr-font-primary: #1a1a1a;
-    --clr-font-secondary: #787878;
-    --clr-button-primary: #4a90e2;
-    --clr-button-secondary: #007aff;
-    --clr-button-third: #fafafa;
+    --clr-white-1: #fff;
+    --clr-white-2: #fafafa;
+
+    --clr-gray-1: #f3f3f3;
+    --clr-gray-2: #e4e7e9;
+    --clr-gray-3: #d8d8d8;
+    --clr-gray-4: #c7c7cc;
+    --clr-gray-5: #9B9B9B;
+    --clr-gray-6: #787878;
+
+    --clr-black-1: #1a1a1a;
+    
+    --clr-blue-1: #4a90e2;
+    --clr-blue-2: #007aff;
+
     --clr-red: #ff3b30;
+    
     --clr-yellow: #e8b100;
 
     --font-calli: "Calligraffitti", sans-serif;
