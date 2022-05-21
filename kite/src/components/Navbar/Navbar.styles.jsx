@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 
 export const StyledNavbar = styled(Navbar)`
   width: 100vw;
-  background-color: var(--clr-white);
+  background-color: var(--clr-white-1);
   height: 68px;
   position: fixed;
   top: 0;
