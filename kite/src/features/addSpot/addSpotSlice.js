@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   value: {
     isPopupOpen: false,
+    isConfirmed: false,
     name: "",
     country: "",
     month: "",
