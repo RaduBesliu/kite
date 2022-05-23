@@ -81,8 +81,8 @@ function AddSpotForm({ className }) {
       <div className="form__information">
         <HiInformationCircle size={30} />
         <p className="information__text">
-          To add your new spot, click anywhere on the map after hitting{" "}
-          <span>CONFIRM</span>.
+          To add your new spot, double click/tap anywhere on the map after
+          hitting <span>CONFIRM</span>.
         </p>
       </div>
     </form>
