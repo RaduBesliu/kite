@@ -1,10 +1,27 @@
+// React
 import React from "react";
 
-function AddSpotFormInput({ className, labelText, handleChange }) {
+// Libraries
+import { useSelector, useDispatch } from "react-redux";
+
+// Features
+import { setNewSpot } from "../../../features/addSpot/addSpotSlice";
+
+function AddSpotFormInput({ className, labelText, type }) {
+  const dispatch = useDispatch();
+
+  const addSpot = useSelector((state) => state.addSpot.value);
+
   return (
     <div className={className}>
       <label>{labelText}</label>
-      <input value={"a"} onChange={handleChange} placeholder="Any" />
+      <input
+        value={addSpot.type}
+        onChange={(e) =>
+          dispatch(setNewSpot({ ...addSpot, [type]: e.target.value }))
+        }
+        placeholder="Any"
+      />
     </div>
   );
 }
