@@ -11,19 +11,27 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import Leaflet from "leaflet";
 import { useMapEvents } from "react-leaflet/hooks";
+import { useSelector, useDispatch } from "react-redux";
 
 // Components
 import { StyledSpotMarker } from "../SpotMarker/SpotMarker.styles";
+
+// Features
+import { setNewSpot } from "../../features/addSpot/addSpotSlice";
 
 function Map({
   className,
   filterSpots,
   favourites,
-  spots,
-  setSpots,
   setFavourites,
+  // spots,
+  // setSpots,
 }) {
   const [renderCount, setRenderCount] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const addSpot = useSelector((state) => state.addSpot.value);
 
   const corner1 = Leaflet.latLng(-90, -200);
   const corner2 = Leaflet.latLng(90, 200);
@@ -32,17 +40,10 @@ function Map({
   function Map() {
     useMapEvents({
       dblclick: (e) => {
-        console.log(e.latlng.lat, e.latlng.lng, spots);
-        setSpots([
-          ...spots,
-          {
-            favourite: false,
-            name: "test",
-            lat: e.latlng.lat,
-            long: e.latlng.lng,
-            id: 100,
-          },
-        ]);
+        if (!addSpot.isConfirmed) return;
+        const lat = e.latlng.lat.toFixed(4);
+        const long = e.latlng.lng.toFixed(4);
+        dispatch(setNewSpot({ ...addSpot, isConfirmed: false, lat, long }));
       },
     });
     return null;
