@@ -106,9 +106,9 @@ function Home() {
           position="absolute"
           zIndex="400"
           color="var(--clr-black-1)"
-          top={"135px"}
-          right={"18px"}
-          filter={"drop-shadow(0px 2px 4px rgba(0, 0, 0,  0.5))"}
+          top="100px"
+          right="18px"
+          filter="drop-shadow(0px 2px 4px rgba(0, 0, 0,  0.5))"
           handleClick={() => setShowFilterForm(true)}
           buttonLabel={
             <div
