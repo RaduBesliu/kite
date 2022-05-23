@@ -25,6 +25,15 @@ function AddSpotForm({ className }) {
 
   const handleConfirm = (e) => {
     e.preventDefault();
+    if (
+      !(
+        addSpot.name &&
+        addSpot.country &&
+        addSpot.name.length <= 25 &&
+        addSpot.country.length <= 25
+      )
+    )
+      return;
     dispatch(setNewSpot({ ...addSpot, isPopupOpen: false, isConfirmed: true }));
   };
 
