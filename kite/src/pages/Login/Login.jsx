@@ -21,6 +21,7 @@ function login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [submitDisabled, setSubmitDisabled] = useState(false);
 
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_API_ENDPOINT;
@@ -32,16 +33,18 @@ function login() {
     }
   }, [token]);
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-
-    axios
+    setSubmitDisabled(true);
+    await axios
       .post(`${BASE_URL}/login`, { username, password })
       .then((response) => {
         localStorage.setItem("token", response.data.userId);
         setToken(response.data.userId);
       })
       .catch((err) => validate_error(err));
+
+    setSubmitDisabled(false);
   };
 
   return (
@@ -62,7 +65,12 @@ function login() {
         value={password}
         setValue={setPassword}
       ></AccountInput>
-      <Button className="form__submit" title="Login" handleClick={submitForm} />
+      <Button
+        className="form__submit"
+        title="Login"
+        handleClick={submitForm}
+        disabled={submitDisabled}
+      />
       <p
         className="form__change-page"
         style={{

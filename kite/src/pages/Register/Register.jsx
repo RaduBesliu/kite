@@ -22,6 +22,7 @@ function register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [select, setSelect] = useState("");
+  const [submitDisabled, setSubmitDisabled] = useState(false);
 
   const [token, setToken] = useState(localStorage.getItem("token"));
 
@@ -44,9 +45,9 @@ function register() {
     }
   }, [token]);
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-
+    setSubmitDisabled(true);
     // Check all inputs first for error, then return if invalid
     let validForm = true;
 
@@ -65,10 +66,13 @@ function register() {
       validForm = false;
     } else setIsValidPassword(true);
 
-    if (!validForm) return;
+    if (!validForm) {
+      setSubmitDisabled(false);
+      return;
+    }
 
     // After registration, login user automatically
-    axios
+    await axios
       .post(`${BASE_URL}/user`, { name: select + name, email: username })
       .then(() => {
         axios
@@ -126,6 +130,7 @@ function register() {
         className="form__submit"
         title="Register"
         handleClick={submitForm}
+        disabled={submitDisabled}
       />
       <p
         className="form__change-page "
