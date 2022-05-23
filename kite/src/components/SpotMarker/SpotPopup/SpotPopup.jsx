@@ -25,10 +25,12 @@ function SpotPopup({
   setFavourites,
 }) {
   const [isFavourite, setIsFavourite] = useState(currentSpot.favourite);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
 
   const BASE_URL = process.env.REACT_APP_API_ENDPOINT;
 
   const handlePopupSubmit = async () => {
+    setSubmitDisabled(true);
     currentSpot.favourite = !isFavourite;
     setIsFavourite((state) => !state);
     setRenderCount(renderCount + 1);
@@ -44,7 +46,7 @@ function SpotPopup({
         .catch((err) => validate_error(err));
     } else {
       const idToDelete = favourites.filter(
-        (favourite) => favourite.spot === parseInt(currentSpot.id)
+        (favourite) => favourite.spot === parseInt(currentSpot?.id)
       )[0].id;
       await axios
         .delete(`${BASE_URL}/favourites/${idToDelete}`)
@@ -55,6 +57,7 @@ function SpotPopup({
         })
         .catch((err) => validate_error(err));
     }
+    setSubmitDisabled(false);
   };
 
   return (
@@ -103,6 +106,7 @@ function SpotPopup({
           backgroundColor={
             currentSpot.favourite ? "var(--clr-red)" : "var(--clr-yellow)"
           }
+          disabled={submitDisabled}
           buttonLabel={
             <div
               style={{
