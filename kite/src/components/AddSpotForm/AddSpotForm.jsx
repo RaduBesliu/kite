@@ -3,13 +3,31 @@ import React from "react";
 
 // Libraries
 import { HiInformationCircle } from "react-icons/hi";
+import { useSelector, useDispatch } from "react-redux";
 
 // Components
 import { StyledAddSpotFormInput } from "./AddSpotFormInput/AddSpotFormInput.styles";
 import AddSpotFormDatePicker from "../AddSpotFormDatePicker/AddSpotFormDatePicker";
 import { StyledButton } from "../Button/Button.styles";
 
+// Features
+import { setNewSpot } from "../../features/addSpot/addSpotSlice";
+
 function AddSpotForm({ className }) {
+  const dispatch = useDispatch();
+
+  const addSpot = useSelector((state) => state.addSpot.value);
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    dispatch(setNewSpot({ ...addSpot, isPopupOpen: false }));
+  };
+
+  const handleConfirm = (e) => {
+    e.preventDefault();
+    dispatch(setNewSpot({ ...addSpot, isPopupOpen: false, isConfirmed: true }));
+  };
+
   return (
     <form className={className}>
       <h2 className="form__title">Add Spot</h2>
@@ -17,7 +35,7 @@ function AddSpotForm({ className }) {
         className={"form__input"}
         width="230px"
         height="30px"
-        name="name"
+        type="name"
         borderBottom="2px solid var(--clr-gray-4)"
         backgroundColor="var(--clr-white-1)"
         labelText="Name"
@@ -26,7 +44,7 @@ function AddSpotForm({ className }) {
         className={"form__input"}
         width="230px"
         height="30px"
-        name="country"
+        type="country"
         borderBottom="2px solid var(--clr-gray-4)"
         backgroundColor="var(--clr-white-1)"
         labelText="Country"
@@ -39,9 +57,7 @@ function AddSpotForm({ className }) {
           height="max-content"
           backgroundColor="white"
           color="var(--clr-red)"
-          handleClick={(e) => {
-            e.preventDefault();
-          }}
+          handleClick={handleCancel}
           buttonLabel={"CANCEL"}
         />
         <StyledButton
@@ -49,9 +65,7 @@ function AddSpotForm({ className }) {
           height="max-content"
           backgroundColor="white"
           color="var(--clr-blue-2)"
-          handleClick={(e) => {
-            e.preventDefault();
-          }}
+          handleClick={handleConfirm}
           buttonLabel={"CONFIRM"}
         />
       </div>
