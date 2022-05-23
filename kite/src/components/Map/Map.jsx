@@ -18,14 +18,18 @@ import { StyledSpotMarker } from "../SpotMarker/SpotMarker.styles";
 
 // Features
 import { setNewSpot } from "../../features/addSpot/addSpotSlice";
+import axios from "axios";
+
+// Helpers
+import { validate_error } from "../../helpers/validate_error";
 
 function Map({
   className,
   filterSpots,
   favourites,
   setFavourites,
-  // spots,
-  // setSpots,
+  spots,
+  setSpots,
 }) {
   const [renderCount, setRenderCount] = useState(1);
 
@@ -33,17 +37,34 @@ function Map({
 
   const addSpot = useSelector((state) => state.addSpot.value);
 
-  const corner1 = Leaflet.latLng(-90, -200);
-  const corner2 = Leaflet.latLng(90, 200);
+  const corner1 = Leaflet.latLng(-95, -200);
+  const corner2 = Leaflet.latLng(95, 200);
   const bounds = Leaflet.latLngBounds(corner1, corner2);
+
+  const BASE_URL = process.env.REACT_APP_API_ENDPOINT;
 
   function Map() {
     useMapEvents({
-      dblclick: (e) => {
+      dblclick: async (e) => {
         if (!addSpot.isConfirmed) return;
         const lat = e.latlng.lat.toFixed(4);
         const long = e.latlng.lng.toFixed(4);
         dispatch(setNewSpot({ ...addSpot, isConfirmed: false, lat, long }));
+        const newSpot = {
+          name: addSpot.name,
+          country: addSpot.country,
+          lat,
+          long,
+          probability: Math.floor(Math.random() * 101),
+          month: addSpot.month,
+        };
+        axios
+          .post(`${BASE_URL}/spot`, newSpot)
+          .then((response) => {
+            setSpots([...spots, response.data]);
+            return response.data;
+          })
+          .catch((err) => validate_error(err));
       },
     });
     return null;
@@ -79,6 +100,7 @@ function Map({
               iconSize: [27, 41],
               iconAnchor: [13, 41],
               popupAnchor: [
+                // Set popup position based on lat and long
                 spot.long < -150 ? 175 : spot.long > 150 ? -175 : 0,
                 spot.lat < -65 ? -50 : spot.lat > 65 ? 550 : -50,
               ],
