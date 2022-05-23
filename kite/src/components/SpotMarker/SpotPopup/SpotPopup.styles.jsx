@@ -37,7 +37,7 @@ export const StyledSpotPopup = styled(SpotPopup)`
 
   & .container {
     width: 269px;
-    height: 500px;
+    height: 490px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
     position: relative;
 
@@ -64,7 +64,7 @@ export const StyledSpotPopup = styled(SpotPopup)`
   @media (max-width: 550px) {
     .leaflet-popup-content-wrapper,
     & .container {
-      width: 200px;
+      width: 240px;
     }
 
     .leaflet-popup-close-button {
@@ -76,7 +76,7 @@ export const StyledSpotPopup = styled(SpotPopup)`
     }
 
     & .container > .information {
-      width: 170px;
+      width: 150px;
 
       & h2 {
         font-size: 24px;
