@@ -35,33 +35,38 @@ function AddSpotFormDatePicker() {
   const addSpot = useSelector((state) => state.addSpot.value);
 
   useEffect(() => {
-    console.log(monthsOrder[startDate.getMonth() + 1]);
+    // Set month to the start date ( end date is not used )
     dispatch(
       setNewSpot({ ...addSpot, month: monthsOrder[startDate.getMonth() + 1] })
     );
   }, [startDate]);
 
   return (
-    <div className={"date--flex"}>
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        selectsStart
-        startDate={startDate}
-        endDate={endDate}
-        dateFormat="MMMM"
-        showMonthYearPicker
-      />
-      <span>-</span>
-      <DatePicker
-        selected={endDate}
-        onChange={(date) => setEndDate(date)}
-        selectsEnd
-        startDate={startDate}
-        endDate={endDate}
-        dateFormat="MMMM"
-        showMonthYearPicker
-      />
+    <div className="date-container">
+      <div className={"date--flex"}>
+        <h4>Start</h4>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          selectsStart
+          startDate={startDate}
+          endDate={endDate}
+          dateFormat="MMMM"
+          showMonthYearPicker
+        />
+      </div>
+      <div className={"date--flex"}>
+        <h4>End</h4>
+        <DatePicker
+          selected={endDate}
+          onChange={(date) => setEndDate(date)}
+          selectsEnd
+          startDate={startDate}
+          endDate={endDate}
+          dateFormat="MMMM"
+          showMonthYearPicker
+        />
+      </div>
     </div>
   );
 }
