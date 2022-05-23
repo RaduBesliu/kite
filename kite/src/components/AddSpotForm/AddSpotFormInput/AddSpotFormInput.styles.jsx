@@ -20,6 +20,10 @@ export const StyledAddSpotFormInput = styled(AddSpotFormInput)`
     transition: 500ms;
   }
 
+  & input::placeholder {
+    text-transform: capitalize;
+  }
+
   & input:focus {
     border-color: var(--clr-blue-2);
   }
