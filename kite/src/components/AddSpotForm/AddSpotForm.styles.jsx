@@ -4,7 +4,7 @@ import AddSpotForm from "./AddSpotForm";
 
 export const StyledAddSpotForm = styled(AddSpotForm)`
   width: 300px;
-  height: 500px;
+  height: 520px;
   background-color: var(--clr-white-1);
   position: absolute;
   top: 50%;
@@ -86,5 +86,25 @@ export const StyledAddSpotForm = styled(AddSpotForm)`
   .information__text span {
     color: var(--clr-blue-2);
     font-weight: 700;
+  }
+
+  @media (max-width: 550px) {
+    width: 250px;
+    height: 460px;
+
+    .date-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    & .form__input {
+      margin-top: 10px;
+      width: 70%;
+      margin-left: 10px;
+    }
+
+    .information__text {
+      font-size: 18px;
+    }
   }
 `;
