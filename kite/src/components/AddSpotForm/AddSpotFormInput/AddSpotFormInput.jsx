@@ -20,7 +20,7 @@ function AddSpotFormInput({ className, labelText, type }) {
         onChange={(e) =>
           dispatch(setNewSpot({ ...addSpot, [type]: e.target.value }))
         }
-        placeholder="Any"
+        placeholder={`${type} (25 characters max)`}
       />
     </div>
   );
