@@ -11,7 +11,7 @@ export const StyledFilterForm = styled(FilterForm)`
   height: 248px;
   background-color: var(--clr-white-2);
   position: absolute;
-  top: 117px;
+  top: 100px;
   right: 19px;
   z-index: 900;
 
