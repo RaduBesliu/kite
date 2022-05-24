@@ -17,3 +17,7 @@
 - react-icons
 - react-leaflet
 - react-router-dom
+
+## Changes
+- Modified **Add Spot** form; the user adds the information required and double clicks anywhere on the map to place the new spot
+- **Filter Button** & **Filter Form** are closed to the navbar
