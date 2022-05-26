@@ -12,12 +12,13 @@ Message me directly to get access to the API.
 ## Technologies used
 - HTML
 - CSS
+- SCSS
 - Javascript
 - JSX
 - Lodash
 - Axios
 - LeafletJS
-- React
+- React 18
   - redux
   - styled-components
   - react-datepicker
