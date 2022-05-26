@@ -1,6 +1,6 @@
 # Kite
 ## Description
-Kite is a tracker that allows users to create, remove and add to favorites kitesurfing locations on an intereactive map.<br>
+Kite is a tracker that allows users to create, remove and add to favorites kitesurfing locations on an interactive map.<br>
 Each spot displays information about the name, country, wind probability, latitude, longitude and best month to visit.<br>
 
 ## API
